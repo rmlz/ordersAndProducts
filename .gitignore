@@ -102,3 +102,17 @@ dist
 
 # TernJS port file
 .tern-port
+
+\.idea/jsLibraryMappings\.xml
+
+\.idea/misc\.xml
+
+\.idea/runConfigurations/bin_www\.xml
+
+node_modules/
+
+\.idea/vcs\.xml
+
+\.idea/modules\.xml
+
+\.idea/ordersAndProducts\.iml
