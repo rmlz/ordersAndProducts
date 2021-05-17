@@ -1,6 +1,73 @@
 extends layout
 
 block content
-  h1 ORDERS AND PRODUCTS API
-  p Welcome to ORDERS AND PRODUCTS API by
-    a(href="http://www.github.com/rmlz") RmLZ
+  div.container
+    div.row
+      h1 ORDERS AND PRODUCTS API
+      p Welcome to ORDERS AND PRODUCTS API by:
+        span
+        a(href="http://www.github.com/rmlz") RmLZ
+      hr
+      br
+    div.row
+      div(class='col s12')
+        h3 Register Product.
+        p You can use the form below to add products data in the database.
+          form(method='POST' action='/products', target='_blank' name='registerProductForm')
+            label(for='name') Name
+              Input( type='text' name='name' id='name' data-length="120" placeholder='My Product')
+            label(for='price') Price
+              Input( type='number' name='price' id='price' step='0.01' placeholder='9.99' min='0.00' onfocus='updateFinalPrice()'
+                   onblur='fixTwoDecimals()' onkeydown='updateFinalPrice()' max='1000000')
+            label(for='Description') Description
+              textarea( class="materialize-textarea" id='description' name='description' placeholder='My Product' maxlength='300')
+            label(for='rating') Rating (STARS)
+              Input( type='number' name='rating' id='rating' step='0.1' placeholder='5.0' min='0' max='5')
+            p
+              label(for='isPromo')
+                Input( type='checkbox' name='isPromo' id='isPromo' onclick='checkIfPromotionalPrice()' value="true")
+                span Would you like to set a Promotional price?
+            div.inputDisplayNone(id='promoInputs')
+              label(for='priceCutOff') How much you want to cut from original price? (percentage)
+                Input( type='number' name='priceCutOff' id='priceCutOff' value='0' step='0.01' min='0' max='100'
+                     onblur='updateCutOff()' onfocus='updateFinalPrice()' onkeydown='updateFinalPrice()')
+              label(for='finalPrice') This is the PROMO PRICE!
+                Input( readonly type='number' name='finalPrice' id='finalPrice')
+            button(type='submit' class='waves-effect waves-light btn' onclick="reloadPage()")
+              i(class="material-icons left") send
+              span Submit
+    hr
+    br
+    div.row
+      div(class='col s12')
+        h3 Update Product.
+          p You can use the form below to update a products data in the database.
+            form(name='updateProductForm')
+              div.row
+                div(class="input-field")
+                  input(class='autocomplete' type='text' id='autocompleteid' onchange="getProductById()" )
+                  label(for="autocompleteid") Product ID
+
+              label(for='nameUpd') Name
+                Input( type='text' name='nameUpd' id='nameUpd' data-length="120" placeholder='My Product')
+              label(for='priceUpd') Price
+                Input( type='number' name='priceUpd' id='priceUpd' step='0.01' placeholder='9.99' min='0.00' onfocus='updateFinalPrice()'
+                  onblur='fixTwoDecimals()' onkeydown='updateFinalPrice()' max='1000000')
+              label(for='DescriptionUpd') Description
+                textarea( class="materialize-textarea" id='descriptionUpd' name='description' placeholder='My Product' maxlength='300')
+              label(for='ratingUpd') Rating (STARS)
+                Input( type='number' name='ratingUpd' id='ratingUpd' step='0.1' placeholder='5.0' min='0' max='5')
+              p
+                label(for='isPromoUpd')
+                  Input( type='checkbox' name='isPromoUpd' id='isPromoUpd' value="true")
+                  span Would you like to set a Promotional price?
+              label(for='priceCutOffUpd') How much you want to cut from original price? (percentage)
+              Input( type='number' name='priceCutOffUpd' id='priceCutOffUpd' value='0' step='0.01' min='0' max='100'
+                onblur='updateCutOff()' onfocus='updateFinalPrice()' onkeydown='updateFinalPrice()')
+              label(for='finalPriceUpd') How much you want to cut from original price?
+              Input( type='number' name='finalPriceUpd' id='finalPriceUpd' readonly min='0')
+              button(type="button" class='waves-effect waves-light btn' onclick="updateProduct()")
+                i(class="material-icons left") update
+                span Submit
+
+

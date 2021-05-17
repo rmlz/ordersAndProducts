@@ -17,7 +17,7 @@ const ProductSchema = new mongoose.Schema(
         },
         rating: {
             type: Number,
-            default: 0,
+            default: 5,
             min: 0,
             max: 5
         },
@@ -28,12 +28,12 @@ const ProductSchema = new mongoose.Schema(
         priceCutOff: {
             type: Number,
             min: 0,
-            max: 1,
-            default: 1
+            max: 100,
+            default: 0
         },
         finalPrice: {
             type: Number,
-            required: Number
+            required: true
         }
     }
 )

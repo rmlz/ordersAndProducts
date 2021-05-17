@@ -11,7 +11,7 @@ class GenericController {
     constructor(model) {
         this._model = model
         this.store = this.store.bind(this);
-        this.index = this.index.bind(this)
+        this.findAll = this.findAll.bind(this)
     }
 
     /**
@@ -35,7 +35,7 @@ class GenericController {
      * @param {Object} res The response object
      * @return {Object} res The response object
      */
-    async index(req, res) {
+    async findAll(req, res) {
         try {
             const data = await this._model.find({});
             return res.json(data)
