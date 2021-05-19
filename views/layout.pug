@@ -8,7 +8,82 @@ html
     link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
 
   body
-    block content
+    div.container
+      nav.teal
+        div.nav-wrapper
+          div(class="col s12")
+            a(class="brand-logo" href="/") Orders & Products
+      div.row
+        h4 Welcome to ORDERS AND PRODUCTS API by:
+          span
+          a(href="http://www.github.com/rmlz") &nbspRmLZ
+        hr
+        br
+      div.row
+        div(class="col s6")
+          div(class="card blue-grey darken-1")
+            div(class="card-content white-text")
+              span.card-title What is the ORDERS AND PRODUCTS API?
+              p Hi, my name is Ramon and this is a simple API to simulate an app managing orders and products.
+              p This project was done as a mean to exercise what I have been learning in Backend classes. I hope you enjoy.
+            div.card-action
+
+      div.row
+        div(class="col s6")
+          div(class="card blue-grey darken-1")
+            div(class="card-content white-text")
+              span.card-title What technologies has been used so far?
+
+              div.row
+                div(class="col s6")
+                  div.card
+                    div.card-image
+                      img(src="https://avatars-05.gitter.im/group/iv/4/5f4df248d73408ce4fedb51f")
+                    span.teal-text MaterializeCSS
+                  p Material Design Framework that is straight to the point!
+                    div.card-action
+                      a(href="https://materializecss.com/about.html") Visit Site
+
+                div(class="col s6")
+                  div.card
+                    div.card-image
+                      img(src="https://avatars.githubusercontent.com/u/9338635?s=200&v=4")
+                    span.teal-text PUG.JS
+                  p Template compiler for Javascript! AWESOME!
+                    div.card-action
+                      a(href="https://www.pugjs.org") Visit Site
+              div.row
+                div(class="col s6")
+                  div.card
+                    div.card-image
+                      img(src="https://d2m06gn7cjwia2.cloudfront.net/express.png")
+                    span.teal-text EXPRESS.JS
+                  p Top-World framework for developing applications.
+                    div.card-action
+                      a(href="https://expressjs.com/") Visit Site
+
+                div(class="col s6")
+                  div.card
+                    div.card-image
+                      img(src="https://4.bp.blogspot.com/-X7UPkOQjQuQ/WuHLUEM7SDI/AAAAAAAAAOY/rXGXSOfPP2ckF_cSOC3C5d3B_BhIgNcxACLcBGAs/s1600/mongodb%2B%25282%2529.png")
+                    span.teal-text MongoDB and Mongoose
+                  p NoSQL database for modern apps and Javascript schema builder!
+                    div.card-action
+                      li
+                        a(href="https://www.mongodb.com/") Visit MongoDB
+                      li
+                        a(href="https://mongoosejs.com/") Visit Mongoose
+              div.row
+                div(class="col s6")
+                  div.card
+                    div.card-image
+                      img(src="https://cdn.iconscout.com/icon/free/png-256/nodemon-226039.png")
+                    span.teal-text Nodemon
+                  p Automatic restarter for Node.JS applications.
+                    div.card-action
+                      a(href="https://www.npmjs.com/package/nodemon") Visit Site
+        div(class="col s6")
+          block content
   script(src='/js/appControl.js')
     <!-- Compiled and minified JavaScript -->
   script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
