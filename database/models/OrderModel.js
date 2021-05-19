@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
-const config = require("../config")
+const config = {
+    order: process.env.order
+}
 
 const OrderSchema = new mongoose.Schema(
     {

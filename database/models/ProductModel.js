@@ -1,5 +1,7 @@
 const mongoose = require("mongoose")
-const config = require("../config")
+const config = {
+    product: process.env.product
+}
 
 const ProductSchema = new mongoose.Schema(
     {
