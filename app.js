@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const db = require('./database/config')
 
 const indexRouter = require('./routes/indexRouter');
 const orderRouter = require('./routes/orderRouter');
@@ -16,6 +15,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 // database setup
+const db = {
+    uri: process.env.dbURI,
+    product: process.env.product,
+    order: process.env.order
+}
+
 app.set("db", db);
 
 app.use(logger('dev'));
