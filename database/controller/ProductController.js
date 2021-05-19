@@ -2,32 +2,38 @@ const Product = require("../models/ProductModel")
 const GenericController = require("./GenericController");
 
 class ProductsController extends GenericController  {
+    /**
+     * @param {Model} model The default model object
+     * for the controller. This is required to create
+     * an instance of the controller
+     */
     constructor(model) {
         super(model);
         this._model = model
-        this.findOne = this.findOne.bind(this)
-        this.patch = this.patch.bind(this)
+        this.finalPrice = this.finalPrice.bind(this)
     }
-    async findOne(req, res) {
+    /**
+     * @param {Object} req The request object
+     * @param {Object} res The response object
+     * @return {Object} res The response object
+     */
+    async finalPrice(req, res) {
         try {
-            const data = await this._model.findById(req.params.idProduct);
-            return res.json(data)
+            const id = req.params.id
+            const data = await this._model.findById(id)
+            const finalPrice = data.price * (100 - data.priceCutOff)/100
+            const filter = {
+                finalPrice: finalPrice.toFixed(2),
+                isPromo: data.priceCutOff >= 0
+            }
+            const update = await this._model.findByIdAndUpdate(id, filter, {new: true})
+            return res.json({
+                msg: "Final price updated!",
+                data: update
+            })
         } catch (e) {
             console.log(e)
-            return res.json({error: e});
-        }
-    }
-    async patch(req, res) {
-        try {
-            const bodyData = req.body;
-            const id = req.params.idProduct;
-            debugger;
-            console.log(id, bodyData)
-            const data = await this._model.findByIdAndUpdate(id, bodyData, {new: true});
-            return res.json(data)
-        } catch (e) {
-            console.log(e)
-            return res.json({error: e});
+            return res.json({error: "error"});
         }
     }
 }

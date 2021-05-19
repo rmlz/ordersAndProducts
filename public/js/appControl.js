@@ -24,7 +24,8 @@ function getElementValue(element) {
 }
 
 function updateProduct() {
-    let id = getElementValue('autocompleteid')
+    let idName = getElementValue('autocompleteid')
+    let id = idName.split('-')[0]
     let newName = getElementValue('nameUpd')
     let newPrice = getElementValue('priceUpd')
     let newDescr = getElementValue('ratingUpd')
@@ -116,8 +117,9 @@ function updateCutOff() {
 
 function loadIdAutoComplete(data) {
     let elems = document.querySelectorAll('#autocompleteid');
+    let elems2 = document.querySelectorAll('#autocompleteid2')
     let mapData = data.map(function(item) {
-        return [item['_id'], null]
+        return [item['_id'] + '-' + item['name'], null]
     })
     let dataIds = Object.fromEntries(mapData)
     console.log(data, mapData, dataIds)
@@ -128,12 +130,14 @@ function loadIdAutoComplete(data) {
     console.log(M)
     console.log(window.M)
     let instances = M.Autocomplete.init(elems, options);
+    let instances2 = M.Autocomplete.init(elems2, options);
 
     console.log(instances)
 }
 
 function getProductById() {
-    let id = getElementValue('autocompleteid')
+    let idAndName = getElementValue('autocompleteid')
+    let id = idAndName.split('-')[0]
     if (id.length > 20) {
         let httpReq = setRequestHttp(
             "GET",
@@ -153,7 +157,6 @@ function getProductById() {
             })
         httpReq.send()
     }
-
 }
 
 function setRequestHttp(method, url, onload, onError){

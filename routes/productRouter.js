@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get('/', ProductController.findAll)
 router.post('/', ProductController.store)
-router.get('/:idProduct', ProductController.findOne)
-router.patch('/:idProduct', ProductController.patch)
+router.get('/:id', ProductController.findOne)
+router.patch('/:id', ProductController.patch)
+router.delete('/:id', ProductController.delete)
+router.get('/finalprice/:id', ProductController.finalPrice)
 
 module.exports = router;
