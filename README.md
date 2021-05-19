@@ -7,6 +7,7 @@
 # ordersAndProducts
 Welcome to Orders & Products API by RmLZ
 
+You can find a [example app](https://ordersproducsapi.herokuapp.com/) in Heroku. Keep reading for further instructions.
 ## What is Orders and Products API?
 Hi, my name is Ramon and this is a simple API to simulate an app managing orders and products.
 
