@@ -116,3 +116,5 @@ node_modules/
 \.idea/modules\.xml
 
 \.idea/ordersAndProducts\.iml
+
+database/config\.js
