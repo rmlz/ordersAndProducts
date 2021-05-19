@@ -12,7 +12,7 @@ class GenericController {
         this._model = model
         this.store = this.store.bind(this);
         this.findAll = this.findAll.bind(this)
-        this.findOne = this.findOne.bind(this)
+        this.findById = this.findById.bind(this)
         this.patch = this.patch.bind(this)
         this.delete = this.delete.bind(this)
     }
@@ -53,7 +53,7 @@ class GenericController {
      * @param {Object} res The response object
      * @return {Object} res The response object
      */
-    async findOne(req, res) {
+    async findById(req, res) {
         try {
             const data = await this._model.findById(req.params.id);
             return res.json(data)

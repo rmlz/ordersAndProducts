@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/', OrdersController.findAll)
 router.post('/', OrdersController.store)
-router.get('/:id', OrdersController.findOne)
+router.get('/:id', OrdersController.findById)
 router.delete('/:id', OrdersController.delete)
 
 module.exports = router;
